@@ -1,0 +1,25 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.flydubai.com/HelloSoap"
+           xmlns:m="http://www.flydubai.com/HelloSoap"
+           xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope"
+           elementFormDefault="qualified">
+
+	<!-- Request -->
+    <xs:element name="HelloSoapRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="ClientName" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+	<!-- Response -->
+    <xs:element name="HelloSoapResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="Response" type="xs:string"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>

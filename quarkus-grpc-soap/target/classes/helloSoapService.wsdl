@@ -1,0 +1,51 @@
+<wsdl:definitions xmlns:sch="http://www.flydubai.com/HelloSoap" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://www.flydubai.com/HelloSoap" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://www.flydubai.com/HelloSoap">
+<wsdl:types>
+<xs:schema xmlns:SOAP-ENV="http://www.w3.org/2001/12/soap-envelope" xmlns:m="http://www.flydubai.com/HelloSoap" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://www.flydubai.com/HelloSoap">
+<!--  Request  -->
+<xs:element name="HelloSoapRequest">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="ClientName" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+<!--  Response  -->
+<xs:element name="HelloSoapResponse">
+<xs:complexType>
+<xs:sequence>
+<xs:element name="Response" type="xs:string"/>
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+</wsdl:types>
+<wsdl:message name="HelloSoapResponse">
+<wsdl:part element="tns:HelloSoapResponse" name="HelloSoapResponse"> </wsdl:part>
+</wsdl:message>
+<wsdl:message name="HelloSoapRequest">
+<wsdl:part element="tns:HelloSoapRequest" name="HelloSoapRequest"> </wsdl:part>
+</wsdl:message>
+<wsdl:portType name="ClientPort">
+<wsdl:operation name="HelloSoap">
+<wsdl:input message="tns:HelloSoapRequest" name="HelloSoapRequest"> </wsdl:input>
+<wsdl:output message="tns:HelloSoapResponse" name="HelloSoapResponse"> </wsdl:output>
+</wsdl:operation>
+</wsdl:portType>
+<wsdl:binding name="ClientPortSoap11" type="tns:ClientPort">
+<soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+<wsdl:operation name="HelloSoap">
+<soap:operation soapAction=""/>
+<wsdl:input name="HelloSoapRequest">
+<soap:body use="literal"/>
+</wsdl:input>
+<wsdl:output name="HelloSoapResponse">
+<soap:body use="literal"/>
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+<wsdl:service name="ClientPortService">
+<wsdl:port binding="tns:ClientPortSoap11" name="ClientPortSoap11">
+<soap:address location="http://localhost:8090/helloSoapService"/>
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
